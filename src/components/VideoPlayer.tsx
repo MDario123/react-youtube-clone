@@ -6,6 +6,7 @@ const StyledEmbed = styled.iframe`
   max-height: 80vh;
   aspect-ratio: 1.5;
   border-radius: 10px;
+  border-style: none;
 `;
 
 export function VideoPlayer() {
@@ -16,9 +17,7 @@ export function VideoPlayer() {
   return (
     <StyledEmbed
       src={iFrameSrc + "?" + queryParams.toString()}
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
     />
   );
 }
