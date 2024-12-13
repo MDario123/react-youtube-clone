@@ -2,8 +2,11 @@
   "name": "react-youtube-clone",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://MDario123.github.io/react-youtube-clone/",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
