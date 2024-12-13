@@ -114,4 +114,4 @@ Please change the parent <Route path="${A}"> to <Route path="${A==="/"?"*":`${A}
   aspect-ratio: 1.5;
   border-radius: 10px;
   border-style: none;
-`;function KD(){const{videoId:e}=E1(),n=`https://www.youtube.com/embed/${e}`,i=new URLSearchParams({autoplay:"1"});return Ze.jsx(HD,{src:n+"?"+i.toString(),allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"})}ox.createRoot(document.getElementById("root")).render(Ze.jsx(L.StrictMode,{children:Ze.jsx(JA,{children:Ze.jsx(kA,{children:Ze.jsx(Wf,{path:"/",element:Ze.jsx(WD,{}),children:Ze.jsx(Wf,{path:"/:videoId",element:Ze.jsx(KD,{})})})})})}));
+`;function KD(){const{videoId:e}=E1(),n=`https://www.youtube.com/embed/${e}`,i=new URLSearchParams({autoplay:"1"});return Ze.jsx(HD,{src:n+"?"+i.toString(),allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"})}ox.createRoot(document.getElementById("root")).render(Ze.jsx(L.StrictMode,{children:Ze.jsx(JA,{children:Ze.jsx(kA,{children:Ze.jsx(Wf,{path:"/",element:Ze.jsx(WD,{}),children:Ze.jsx(Wf,{path:":videoId",element:Ze.jsx(KD,{})})})})})}));
