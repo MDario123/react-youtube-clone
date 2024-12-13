@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/:videoId" element={<VideoPlayer />} />
+          <Route path=":videoId" element={<VideoPlayer />} />
         </Route>
       </Routes>
     </BrowserRouter>
