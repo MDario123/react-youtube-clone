@@ -3,7 +3,7 @@ import "./App.css";
 import { SearchBar } from "./components/SearchBar";
 import { Outlet, useSearchParams, useParams } from "react-router";
 import { fetcher } from "./util/fetcher";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { VideosLayout } from "./components/VideosLayout";
 
@@ -17,7 +17,10 @@ const StyledApp = styled.div`
 
 function App() {
   let [searchParams, setSearchParams] = useSearchParams();
-  const q = searchParams.get("q") || "rickroll";
+  const [q, _] = useState(
+    searchParams.get("q") ||
+    (Math.random() < 0.1 ? "rickroll" : "Harbour Space"),
+  );
 
   const { videoId } = useParams();
 
