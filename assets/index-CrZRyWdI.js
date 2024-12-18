@@ -107,8 +107,8 @@ Please change the parent <Route path="${A}"> to <Route path="${A==="/"?"*":`${A}
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin: 20px;
-`;function WD(){let[e,n]=L1();const i=e.get("q")||"rickroll",{videoId:o}=E1(),{data:a,error:u,isLoading:c}=bx(`https://harbour.dev.is/api/search?q=${i}`,MD);L.useEffect(()=>{const m=y=>{if(y.key==="Escape"){const g=document.activeElement;g&&g.blur&&g.blur()}};return window.addEventListener("keydown",m),()=>{window.removeEventListener("keydown",m)}},[]);const d=m=>{n({q:m.search})};let p=null;return c||u||a&&a.map&&(p=a.map(m=>({id:m.id.videoId,thumbnail:m.snippet.thumbnails.url,title:m.title})),p=Ze.jsx(zD,{videos:p,videoPlaying:o})),Ze.jsxs($D,{children:[Ze.jsx(PA,{}),Ze.jsx(Vk,{onSubmit:d,written:i}),p]})}const HD=nr.iframe`
+  margin: 20px clamp(20px, 30% - 250px, 220px);
+`;function WD(){let[e,n]=L1();const[i,o]=L.useState(e.get("q")||(Math.random()<.1?"rickroll":"Harbour Space")),{videoId:a}=E1(),{data:u,error:c,isLoading:d}=bx(`https://harbour.dev.is/api/search?q=${i}`,MD);L.useEffect(()=>{const y=g=>{if(g.key==="Escape"){const w=document.activeElement;w&&w.blur&&w.blur()}};return window.addEventListener("keydown",y),()=>{window.removeEventListener("keydown",y)}},[]);const p=y=>{n({q:y.search})};let m=null;return d||c||u&&u.map&&(m=u.map(y=>({id:y.id.videoId,thumbnail:y.snippet.thumbnails.url,title:y.title})),m=Ze.jsx(zD,{videos:m,videoPlaying:a})),Ze.jsxs($D,{children:[Ze.jsx(PA,{}),Ze.jsx(Vk,{onSubmit:p,written:i}),m]})}const HD=nr.iframe`
   width: 100%;
   max-height: 80vh;
   aspect-ratio: 1.5;
