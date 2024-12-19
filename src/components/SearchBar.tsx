@@ -58,13 +58,11 @@ export function SearchBar({ onSubmit, written }: SearchBarProps) {
         {...register("search")}
         initial={{
           width: "10em",
-          height: "2em",
           borderWidth: 0,
           fontSize: "16px",
         }}
         whileFocus={{
           width: "15em",
-          height: "2em",
           borderWidth: "0.20em",
           fontSize: "20px",
         }}
@@ -75,10 +73,6 @@ export function SearchBar({ onSubmit, written }: SearchBarProps) {
             bounce: 0.5,
           },
           borderWidth: {
-            easing: "easeOut",
-            duration: 0.1,
-          },
-          borderColor: {
             easing: "easeOut",
             duration: 0.1,
           },
