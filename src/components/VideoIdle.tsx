@@ -1,8 +1,10 @@
+import { delay } from "motion";
+import { motion } from "motion/react";
 import { useSearchParams } from "react-router";
 import { NavLink } from "react-router";
 import styled from "styled-components";
 
-const StyledVideoIdle = styled.div`
+const StyledVideoIdle = styled(motion.div)`
   width: 100%;
   aspect-ratio: 1.5;
 
@@ -31,7 +33,22 @@ export function VideoIdle({ id, thumbnail, title }: VideoIdleProps) {
   const [searchParams, _] = useSearchParams();
 
   return (
-    <StyledVideoIdle>
+    <StyledVideoIdle
+      initial={{
+        scale: 0,
+      }}
+      animate={{
+        scale: 1,
+      }}
+      transition={{
+        default: {
+          type: "spring",
+          duration: 0.6,
+          bounce: 0.5,
+          delay: Math.random(),
+        },
+      }}
+    >
       <NavLink to={`/${id}?${searchParams.toString()}`}>
         <StyledThumbnail src={thumbnail} />
       </NavLink>
