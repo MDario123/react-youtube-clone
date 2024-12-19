@@ -11,9 +11,15 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter basename={basePath}>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route path=":videoId" element={<VideoPlayer />} />
-        </Route>
+        <Route path="/" element={<App />} />
+        <Route
+          path="video/:videoId"
+          element={
+            <App>
+              <VideoPlayer />
+            </App>
+          }
+        />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

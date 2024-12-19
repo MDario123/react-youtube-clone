@@ -1,9 +1,9 @@
 import useSWR from "swr";
 import "./App.css";
 import { SearchBar } from "./components/SearchBar";
-import { Outlet, useSearchParams, useParams } from "react-router";
+import { useSearchParams, useParams } from "react-router";
 import { fetcher } from "./util/fetcher";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import styled from "styled-components";
 import { VideosLayout } from "./components/VideosLayout";
 
@@ -15,7 +15,7 @@ const StyledApp = styled.div`
   margin: 20px clamp(20px, 30% - 250px, 220px);
 `;
 
-function App() {
+function App({ children }: { children?: ReactNode }) {
   let [searchParams, setSearchParams] = useSearchParams();
   const [q, _] = useState(
     searchParams.get("q") ||
@@ -73,7 +73,7 @@ function App() {
 
   return (
     <StyledApp>
-      <Outlet />
+      {children}
       <SearchBar onSubmit={onSubmit} written={q} />
       {videos}
     </StyledApp>
