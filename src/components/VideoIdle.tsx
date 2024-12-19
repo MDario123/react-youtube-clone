@@ -21,6 +21,7 @@ const StyledTitle = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  color: rgba(255, 255, 255, 0.87);
 `;
 
 export interface VideoIdleProps {
@@ -51,8 +52,8 @@ export function VideoIdle({ id, thumbnail, title }: VideoIdleProps) {
     >
       <NavLink to={`/${id}?${searchParams.toString()}`}>
         <StyledThumbnail src={thumbnail} />
+        <StyledTitle>{title}</StyledTitle>
       </NavLink>
-      <StyledTitle>{title}</StyledTitle>
     </StyledVideoIdle>
   );
 }
