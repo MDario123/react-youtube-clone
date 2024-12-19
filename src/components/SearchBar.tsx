@@ -56,6 +56,7 @@ export function SearchBar({ onSubmit, written }: SearchBarProps) {
         placeholder="Search..."
         defaultValue={written || ""}
         {...register("search")}
+        onFocus={(e) => e.target.select()} // Select all text on focus
         initial={{
           width: "10em",
           borderWidth: 0,
