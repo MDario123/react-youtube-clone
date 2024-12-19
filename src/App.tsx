@@ -17,10 +17,10 @@ const StyledApp = styled.div`
 
 function App({ children }: { children?: ReactNode }) {
   let [searchParams, setSearchParams] = useSearchParams();
-  const [q, _] = useState(
-    searchParams.get("q") ||
-      (Math.random() < 0.1 ? "rickroll" : "Harbour Space"),
-  );
+  if (!searchParams.get("q")) {
+    searchParams.set("q", Math.random() < 0.1 ? "rickroll" : "Harbour Space");
+  }
+  const q = searchParams.get("q");
 
   const { videoId } = useParams();
 
