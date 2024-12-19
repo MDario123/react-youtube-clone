@@ -3,7 +3,7 @@ import "./App.css";
 import { SearchBar } from "./components/SearchBar";
 import { useSearchParams, useParams } from "react-router";
 import { fetcher } from "./util/fetcher";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect } from "react";
 import styled from "styled-components";
 import { VideosLayout } from "./components/VideosLayout";
 
