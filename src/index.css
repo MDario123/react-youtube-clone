@@ -26,8 +26,14 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #1e1e2e;
+  background: rgb(30, 30, 46);
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
   color: rgba(255, 255, 255, 0.87);
+}
+
+::selection {
+  background: color-mix(in oklab, #fc5c7d 50%, #6a82fb);
+  color: rgba(255, 255, 255, 1);
 }
 
 h1 {

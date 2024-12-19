@@ -13,17 +13,22 @@ const StyledInput = styled(motion.input)`
   background-color: #313244;
 
   border-radius: 2em;
-  border-color: yellow;
-  border-style: solid;
+  border-style: double;
+  border-color: transparent;
+  background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)),
+    linear-gradient(90deg, #fc5c7d, #6a82fb);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 
   text-align: center;
   font-family: "Comic Neue";
   font-size: 16px;
-  color: #cdd6f4;
+  color: rgba(255, 255, 255, 0.87);
   text-overflow: ellipsis;
 
   &:focus::placeholder {
     color: transparent;
+    box-shadow: rgba(#bc96e6, 0.5) 0px 0px 20px 0px;
   }
 `;
 
