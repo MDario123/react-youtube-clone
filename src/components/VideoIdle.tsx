@@ -9,6 +9,12 @@ const StyledVideoIdle = styled(motion.div)`
   aspect-ratio: 1.5;
 
   border-radius: 10px;
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  transition: scale 0.15s ease-out;
 `;
 
 const StyledThumbnail = styled.img`

@@ -12,7 +12,7 @@ const StyledApp = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  margin: 20px clamp(20px, 30% - 250px, 220px);
+  margin: 20px clamp(30px, 30% - 250px, 220px);
 `;
 
 function App({ children }: { children?: ReactNode }) {
