@@ -11,7 +11,7 @@ const StyledApp = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   margin: 20px clamp(20px, 30% - 250px, 220px);
 `;
 
@@ -19,7 +19,7 @@ function App() {
   let [searchParams, setSearchParams] = useSearchParams();
   const [q, _] = useState(
     searchParams.get("q") ||
-    (Math.random() < 0.1 ? "rickroll" : "Harbour Space"),
+      (Math.random() < 0.1 ? "rickroll" : "Harbour Space"),
   );
 
   const { videoId } = useParams();

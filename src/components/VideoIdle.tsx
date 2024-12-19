@@ -6,7 +6,6 @@ const StyledVideoIdle = styled.div`
   width: 100%;
   aspect-ratio: 1.5;
 
-  padding: 10px;
   border-radius: 10px;
 `;
 

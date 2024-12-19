@@ -7,6 +7,7 @@ const StyledVideosLayout = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
   gap: 30px;
   justify-items: center;
+  justify-content: center;
 `;
 
 export function VideosLayout({
