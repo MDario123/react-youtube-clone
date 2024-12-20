@@ -1,4 +1,3 @@
-import { delay } from "motion";
 import { motion } from "motion/react";
 import { useSearchParams } from "react-router";
 import { NavLink } from "react-router";
