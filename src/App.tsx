@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { VideosLayout } from "./components/VideosLayout";
 import { VideoPlayer } from "./components/VideoPlayer";
+import { getNextVideo } from "./util/getNextVideo";
 
 const StyledApp = styled.div`
   display: flex;
@@ -71,28 +72,19 @@ function App() {
       };
     });
 
+    const nextVideo = getNextVideo(videos, videoId);
     if (videoId) {
-      let nextVideoIndex = Math.floor(Math.random() * videos.length);
-      nextVideoIndex =
-        videos[nextVideoIndex].id === videoId
-          ? (nextVideoIndex + 1) % videos.length
-          : nextVideoIndex;
-      const randomNonPlayingVideo = videos[nextVideoIndex].id;
-
       onEnd = () => {
-        navigate(`/${randomNonPlayingVideo}?${searchParams.toString()}`);
+        navigate(`/${nextVideo}?${searchParams.toString()}`);
       };
-
-      videos = (
-        <VideosLayout
-          videos={videos}
-          videoPlaying={videoId}
-          videoNext={randomNonPlayingVideo}
-        />
-      );
-    } else {
-      videos = <VideosLayout videos={videos} videoPlaying={videoId} />;
     }
+    videos = (
+      <VideosLayout
+        videos={videos}
+        videoPlaying={videoId}
+        videoNext={nextVideo}
+      />
+    );
   }
 
   return (
