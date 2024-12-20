@@ -66,9 +66,25 @@ function App({ children }: { children?: ReactNode }) {
         title: item.title,
       };
     });
-    videos = <VideosLayout videos={videos} videoPlaying={videoId} />;
-  } else {
-    //TODO: probably text that says there has been an error
+
+    if (videoId) {
+      let nextVideoIndex = Math.floor(Math.random() * videos.length);
+      nextVideoIndex =
+        videos[nextVideoIndex].id === videoId
+          ? (nextVideoIndex + 1) % videos.length
+          : nextVideoIndex;
+      const randomNonPlayingVideo = videos[nextVideoIndex].id;
+
+      videos = (
+        <VideosLayout
+          videos={videos}
+          videoPlaying={videoId}
+          videoNext={randomNonPlayingVideo}
+        />
+      );
+    } else {
+      videos = <VideosLayout videos={videos} videoPlaying={videoId} />;
+    }
   }
 
   return (
