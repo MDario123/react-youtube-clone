@@ -55,7 +55,7 @@ function App({ children }: { children?: ReactNode }) {
 
   let videos = null;
   if (isLoading) {
-    //TODO: probably text that says it's loading
+    // We just wait
   } else if (error) {
     //TODO: probably text that says there has been an error
   } else if (data && data.map) {
