@@ -15,6 +15,7 @@ const StyledInput = styled(motion.input)`
   border-radius: 2em;
   border-style: double;
   border-color: transparent;
+  border-width: 0.2em;
   background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)),
     linear-gradient(90deg, #fc5c7d, #6a82fb);
   background-origin: border-box;
@@ -26,9 +27,11 @@ const StyledInput = styled(motion.input)`
   color: rgba(255, 255, 255, 0.87);
   text-overflow: ellipsis;
 
-  &:focus::placeholder {
-    color: transparent;
-    box-shadow: rgba(#bc96e6, 0.5) 0px 0px 20px 0px;
+  &:focus {
+    box-shadow: #bc96e680 0px 0px 20px 0px;
+    &::placeholder {
+      color: transparent;
+    }
   }
 `;
 
@@ -64,13 +67,11 @@ export function SearchBar({ onSubmit, written }: SearchBarProps) {
         onFocus={(e) => e.target.select()} // Select all text on focus
         initial={{
           width: "10em",
-          borderWidth: 0,
-          fontSize: "16px",
+          scale: 1,
         }}
         whileFocus={{
           width: "15em",
-          borderWidth: "0.20em",
-          fontSize: "20px",
+          scale: 1.2,
         }}
         transition={{
           default: {
@@ -80,6 +81,10 @@ export function SearchBar({ onSubmit, written }: SearchBarProps) {
           },
           borderWidth: {
             easing: "easeOut",
+            duration: 0.1,
+          },
+          margin: {
+            easing: "easeIn",
             duration: 0.1,
           },
         }}
