@@ -1,11 +1,12 @@
 import useSWR from "swr";
 import "./App.css";
 import { SearchBar } from "./components/SearchBar";
-import { useSearchParams, useParams } from "react-router";
+import { useSearchParams, useParams, useNavigate } from "react-router";
 import { fetcher } from "./util/fetcher";
-import { ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { VideosLayout } from "./components/VideosLayout";
+import { VideoPlayer } from "./components/VideoPlayer";
 
 const StyledApp = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const StyledApp = styled.div`
   margin: 20px clamp(30px, 30% - 250px, 220px);
 `;
 
-function App({ children }: { children?: ReactNode }) {
+function App() {
   let [searchParams, setSearchParams] = useSearchParams();
   if (!searchParams.get("q")) {
     searchParams.set("q", Math.random() < 0.1 ? "rickroll" : "Harbour Space");
@@ -23,6 +24,7 @@ function App({ children }: { children?: ReactNode }) {
   const q = searchParams.get("q");
 
   const { videoId } = useParams();
+  const navigate = useNavigate();
 
   const { data, error, isLoading } = useSWR(
     `https://harbour.dev.is/api/search?q=${q}`,
@@ -53,6 +55,8 @@ function App({ children }: { children?: ReactNode }) {
     setSearchParams({ q: e.search });
   };
 
+  let onEnd = () => {};
+
   let videos = null;
   if (isLoading) {
     // We just wait
@@ -75,6 +79,10 @@ function App({ children }: { children?: ReactNode }) {
           : nextVideoIndex;
       const randomNonPlayingVideo = videos[nextVideoIndex].id;
 
+      onEnd = () => {
+        navigate(`/${randomNonPlayingVideo}?${searchParams.toString()}`);
+      };
+
       videos = (
         <VideosLayout
           videos={videos}
@@ -89,7 +97,7 @@ function App({ children }: { children?: ReactNode }) {
 
   return (
     <StyledApp>
-      {children}
+      {videoId && <VideoPlayer onEnd={onEnd} />}
       <SearchBar onSubmit={onSubmit} written={q} />
       {videos}
     </StyledApp>

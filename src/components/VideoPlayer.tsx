@@ -1,7 +1,8 @@
 import { useParams } from "react-router";
 import styled from "styled-components";
+import YouTube, { YouTubeProps } from "react-youtube";
 
-const StyledEmbed = styled.iframe`
+const StyledEmbed = styled(YouTube)`
   width: 100%;
   max-height: 80vh;
   aspect-ratio: 1.5;
@@ -9,15 +10,16 @@ const StyledEmbed = styled.iframe`
   border-style: none;
 `;
 
-export function VideoPlayer() {
+export function VideoPlayer({ onEnd }: { onEnd?: () => void }) {
   const { videoId } = useParams();
-  const iFrameSrc = `https://www.youtube.com/embed/${videoId}`;
-  const queryParams = new URLSearchParams({ autoplay: "1" });
 
-  return (
-    <StyledEmbed
-      src={iFrameSrc + "?" + queryParams.toString()}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-    />
-  );
+  const opts: YouTubeProps["opts"] = {
+    height: "100%",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
+  return <StyledEmbed videoId={videoId} opts={opts} onEnd={onEnd} />;
 }

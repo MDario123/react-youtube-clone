@@ -55,7 +55,7 @@ export function VideoIdle({ id, thumbnail, title }: VideoIdleProps) {
         },
       }}
     >
-      <NavLink to={`/video/${id}?${searchParams.toString()}`}>
+      <NavLink to={`/${id}?${searchParams.toString()}`}>
         <StyledThumbnail src={thumbnail} />
         <StyledTitle>{title}</StyledTitle>
       </NavLink>
