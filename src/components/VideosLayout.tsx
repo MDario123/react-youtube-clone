@@ -14,17 +14,15 @@ const StyledVideosLayout = styled.div`
 export function VideosLayout({
   videos,
   videoPlaying,
-  videoNext,
 }: {
   videos: VideoIdleProps[];
   videoPlaying: string | undefined;
-  videoNext?: string;
 }) {
   return (
     <StyledVideosLayout>
       {videos.map((video) =>
-        video.id === videoPlaying ? null : video.id === videoNext ? (
-          <VideoNextOverlay>
+        video.id === videoPlaying ? (
+          <VideoNextOverlay key={video.id}>
             <VideoIdle key={video.id} {...video} />
           </VideoNextOverlay>
         ) : (

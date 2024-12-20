@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { useSearchParams } from "react-router";
 import { NavLink } from "react-router";
 import styled from "styled-components";
+import { usePlaylist } from "../hooks/usePlaylist";
 
 const StyledVideoIdle = styled(motion.div)`
   width: 100%;
@@ -29,6 +30,28 @@ const StyledTitle = styled.div`
   color: rgba(255, 255, 255, 0.87);
 `;
 
+const StyledButton = styled.button`
+  background-color: #fc5c7d;
+  padding: 0 0.5em;
+  border: none;
+
+  &:hover {
+    scale: 1.1;
+  }
+  &:active {
+    scale: 0.9;
+  }
+
+  transition: scale 0.2s;
+`;
+
+const DetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
+`;
+
 export interface VideoIdleProps {
   id: string;
   thumbnail: string;
@@ -36,7 +59,8 @@ export interface VideoIdleProps {
 }
 
 export function VideoIdle({ id, thumbnail, title }: VideoIdleProps) {
-  const [searchParams, _] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const [, toggleInPlaylist] = usePlaylist();
 
   return (
     <StyledVideoIdle
@@ -57,8 +81,15 @@ export function VideoIdle({ id, thumbnail, title }: VideoIdleProps) {
     >
       <NavLink to={`/${id}?${searchParams.toString()}`}>
         <StyledThumbnail src={thumbnail} />
-        <StyledTitle>{title}</StyledTitle>
       </NavLink>
+      <DetailsWrapper>
+        <StyledTitle>{title}</StyledTitle>
+        <StyledButton
+          onClick={() => toggleInPlaylist({ id, thumbnail, title })}
+        >
+          P
+        </StyledButton>
+      </DetailsWrapper>
     </StyledVideoIdle>
   );
 }
